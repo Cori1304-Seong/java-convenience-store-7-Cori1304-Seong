@@ -30,8 +30,16 @@ public class Promotion {
         return buy;
     }
 
-    public void setGet(int price) {
-        this.get = get;
+    public void setBuy(int buy) {
+        this.buy = buy;
+    }
+
+    public int getGet() {
+        return buy;
+    }
+
+    public void setGet(int buy) {
+        this.buy = buy;
     }
 
     public Date getStartDate() {
