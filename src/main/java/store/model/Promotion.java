@@ -60,10 +60,17 @@ public class Promotion {
         this.endDate = endDate;
     }
 
+    public String format(Date date) {
+
+        return dateFormat.format(date);
+    }
+
+
     // TODO 필드 이름 변경시 같이 변경
     public String toString() {
         String result =
-                "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", Start_date: " + dateFormat.format(startDate)
+                "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", Start_date: " + dateFormat.format(
+                        startDate)
                         + ", End_date: "
                         + dateFormat.format(endDate);
 
