@@ -47,7 +47,7 @@ class ProductRepositoryTest {
         for (Product product : products) {
             String actual = product.toString();
             assertEquals(productData.get(index), actual,
-                    "mock_loader_data.md와 다른 결과 출력");
+                    "product.md와 내용이 다릅니다.");
             index++;
         }
     }
