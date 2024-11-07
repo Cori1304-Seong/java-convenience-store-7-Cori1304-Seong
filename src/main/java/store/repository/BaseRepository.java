@@ -42,7 +42,7 @@ public abstract class BaseRepository<T> {
             modelDataEntries.add(instance);
         }
     }
-i
+
     /* Model마다 colum이 다르기 떄문에 파싱 기능은 저의 필요 */
     protected abstract T parseData(String[] data);
 }
