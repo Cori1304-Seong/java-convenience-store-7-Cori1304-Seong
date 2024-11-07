@@ -10,6 +10,7 @@ public class Promotion {
     Date startDate;
     Date endDate;
 
+    // TODO 파라미터 이름 변경
     public Promotion(String name, int buy, int get, Date startDate, Date endDate) {
         this.name = name;
         this.buyCount = buy;
@@ -35,11 +36,11 @@ public class Promotion {
     }
 
     public int getGetCount() {
-        return buyCount;
+        return getCount;
     }
 
-    public void setGetCount(int buy) {
-        this.buyCount = buy;
+    public void setGetCount(int getCount) {
+        this.getCount = getCount;
     }
 
     public Date getStartDate() {
