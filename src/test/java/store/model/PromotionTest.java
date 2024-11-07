@@ -76,7 +76,7 @@ class PromotionTest {
     @Test
     public void testToString() {
         String expected = "Name: " + promotion.getName() + ", Buy: " + promotion.getBuyCount() + ", Get: "
-                + promotion.getGetCount() + ", start_date: " + START_DATE.toString() + ", end_date: "
+                + promotion.getGetCount() + ", Start_date: " + START_DATE.toString() + ", End_date: "
                 + END_DATE.toString();
         assertEquals(expected, promotion.toString());
     }

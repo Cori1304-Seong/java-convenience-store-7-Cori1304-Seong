@@ -1,5 +1,6 @@
 package store.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 // TODO getCount, buyCount 이름 고민,
@@ -9,6 +10,7 @@ public class Promotion {
     int getCount;
     Date startDate;
     Date endDate;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     public Promotion(String name, int buyCount, int getCount, Date startDate, Date endDate) {
         this.name = name;
@@ -61,9 +63,9 @@ public class Promotion {
     // TODO 필드 이름 변경시 같이 변경
     public String toString() {
         String result =
-                "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", start_date: " + startDate.toString()
-                        + ", end_date: "
-                        + endDate.toString();
+                "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", Start_date: " + dateFormat.format(startDate)
+                        + ", End_date: "
+                        + dateFormat.format(endDate);
 
         return result;
     }
