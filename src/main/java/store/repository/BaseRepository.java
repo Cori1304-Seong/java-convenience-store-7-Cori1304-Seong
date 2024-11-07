@@ -10,18 +10,20 @@ public abstract class BaseRepository<T> {
     private String filePath;
     private String regex = ",";
     private String line;
+    private String startsWith = "name";
     protected List<T> modelDataEntries = new ArrayList<>();
 
-    public BaseRepository(String filePath, String regex) {
+    public BaseRepository(String filePath, String regex, String startsWith) {
         this.filePath = filePath;
         this.regex = regex;
+        this.startsWith = startsWith;
     }
 
     public BaseRepository(String filePath) {
         this.filePath = filePath;
     }
 
-    public List<T> loadDataFromMarkdown(String startsWith) {
+    public List<T> loadDataFromMarkdown() {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             while ((line = br.readLine()) != null) {
                 addModelData(line, startsWith);

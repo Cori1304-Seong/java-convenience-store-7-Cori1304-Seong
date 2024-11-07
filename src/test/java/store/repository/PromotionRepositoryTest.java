@@ -26,7 +26,7 @@ class PromotionRepositoryTest {
     @Test
     public void testLoadDataFromMarkdown() {
         // TODO loadDataFromMarkdown() 파라미터 startWith 옮길지 생각하기
-        List<Promotion> promotions = repository.loadDataFromMarkdown("name");
+        List<Promotion> promotions = repository.loadDataFromMarkdown();
         int index = 0;
 
         assertNotNull(promotions);

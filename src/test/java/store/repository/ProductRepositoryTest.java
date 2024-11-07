@@ -37,7 +37,7 @@ class ProductRepositoryTest {
     @Test
     public void testLoadDataFromMarkdown() {
         // TODO loadDataFromMarkdown() 파라미터 startWith 옮길지 생각하기
-        List<Product> products = repository.loadDataFromMarkdown("name");
+        List<Product> products = repository.loadDataFromMarkdown();
         int index = 0;
 
         // 결과가 null이 아니고, 예상한 개수인지 확인
