@@ -5,15 +5,15 @@ import java.util.Date;
 // TODO 필드 이름 promotions.md와 다르게 해도 되는지 고민
 public class Promotion {
     String name;
-    int buy;
-    int get;
+    int buyCount;
+    int getCount;
     Date startDate;
     Date endDate;
 
     public Promotion(String name, int buy, int get, Date startDate, Date endDate) {
         this.name = name;
-        this.buy = buy;
-        this.get = get;
+        this.buyCount = buy;
+        this.getCount = get;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -26,20 +26,20 @@ public class Promotion {
         this.name = name;
     }
 
-    public int getBuy() {
-        return buy;
+    public int getBuyCount() {
+        return buyCount;
     }
 
-    public void setBuy(int buy) {
-        this.buy = buy;
+    public void setBuyCount(int buyCount) {
+        this.buyCount = buyCount;
     }
 
-    public int getGet() {
-        return buy;
+    public int getGetCount() {
+        return buyCount;
     }
 
-    public void setGet(int buy) {
-        this.buy = buy;
+    public void setGetCount(int buy) {
+        this.buyCount = buy;
     }
 
     public Date getStartDate() {
@@ -60,7 +60,7 @@ public class Promotion {
 
     // TODO 필드 이름 변경시 같이 변경
     public String toString() {
-        String result = "Name: " + name + ", Buy: " + buy + ", Get: " + get + ", start_date: " + startDate + "end_date:"
+        String result = "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", start_date: " + startDate + "end_date:"
                 + endDate;
 
         return result;
