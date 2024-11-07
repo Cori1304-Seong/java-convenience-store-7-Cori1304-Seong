@@ -1,6 +1,7 @@
 package store.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import store.model.Product;
 import store.repository.ProductRepository;
@@ -11,7 +12,7 @@ public class ProductController {
     Map<String, Product> promotionProductGroup = new HashMap<>();
 
     public void init() {
-    // TODO 데이터 저장 로직 & 재고 관리 로직을 실행하기 위해서 초기에 실행될 기능 추가
+        initProductData();
     }
 
     public Map<String, Product> getProductGroup() {
@@ -22,4 +23,28 @@ public class ProductController {
         return promotionProductGroup;
     }
 
+    void initProductData() {
+        List<Product> products = repository.loadDataFromMarkdown();
+
+        for (Product product : products) {
+            groupProduct(product);
+        }
+    }
+
+    void groupProduct(Product product) {
+        String promotion = product.getPromotion();
+        if (promotion.isEmpty() || promotion.isBlank() || promotion.equals("null")) {
+            addProduct(product);
+            return;
+        }
+        addPromotionProduct(product);
+    }
+
+    void addProduct(Product product) {
+        productGroup.put(product.getName(), product);
+    }
+
+    void addPromotionProduct(Product product) {
+        promotionProductGroup.put(product.getName(), product);
+    }
 }
