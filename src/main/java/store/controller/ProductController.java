@@ -13,4 +13,13 @@ public class ProductController {
     public void init() {
     // TODO 데이터 저장 로직 & 재고 관리 로직을 실행하기 위해서 초기에 실행될 기능 추가
     }
+
+    public Map<String, Product> getProductGroup() {
+        return productGroup;
+    }
+
+    public Map<String, Product> getPromotionProductGroup() {
+        return promotionProductGroup;
+    }
+
 }
