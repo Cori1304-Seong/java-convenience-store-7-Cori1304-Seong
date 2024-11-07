@@ -11,10 +11,10 @@ import store.model.Promotion;
 class PromotionRepositoryTest {
 
     private PromotionRepository repository;
-    private final List<String> productData = List.of(
-            "Name: 탄산2+1, Buy: 2, Get: 1, Start_date: 2024-01-01, End_date: 2024-12-31 ",
-            "Name: MD추천상품, Buy: 1, Get: 1, Start_date: 2024-01-01, End_date: 2024-12-31 ",
-            "Name: 반짝할인, Buy: 1, Get: 1, Start_date: 2024-01-01, End_date: 2024-12-31 "
+    private final List<String> promotionData = List.of(
+            "Name: 탄산2+1, Buy: 2, Get: 1, Start_date: 2024-01-01, End_date: 2024-12-31",
+            "Name: MD추천상품, Buy: 1, Get: 1, Start_date: 2024-01-01, End_date: 2024-12-31",
+            "Name: 반짝할인, Buy: 1, Get: 1, Start_date: 2024-11-01, End_date: 2024-11-30"
     );
 
 
@@ -34,7 +34,7 @@ class PromotionRepositoryTest {
 
         for (Promotion promotion : promotions) {
             String actual = promotion.toString();
-            assertEquals(productData.get(index), actual,
+            assertEquals(promotionData.get(index), actual,
                     "promotions.md와 다른 결과 출력");
             index++;
         }
