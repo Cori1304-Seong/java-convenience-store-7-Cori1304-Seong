@@ -61,11 +61,11 @@ public class Promotion {
 
     // TODO 필드 이름 변경시 같이 변경
     public String toString() {
-        String result = "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", start_date: " + startDate + "end_date:"
-                + endDate;
+        String result =
+                "Name: " + name + ", Buy: " + buyCount + ", Get: " + getCount + ", start_date: " + startDate.toString()
+                        + ", end_date: "
+                        + endDate.toString();
 
         return result;
-
     }
-
 }
