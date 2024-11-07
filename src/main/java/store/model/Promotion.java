@@ -2,7 +2,7 @@ package store.model;
 
 import java.util.Date;
 
-// TODO 필드 이름 promotions.md와 다르게 해도 되는지 고민
+// TODO getCount, buyCount 이름 고민,
 public class Promotion {
     String name;
     int buyCount;
@@ -10,11 +10,10 @@ public class Promotion {
     Date startDate;
     Date endDate;
 
-    // TODO 파라미터 이름 변경
-    public Promotion(String name, int buy, int get, Date startDate, Date endDate) {
+    public Promotion(String name, int buyCount, int getCount, Date startDate, Date endDate) {
         this.name = name;
-        this.buyCount = buy;
-        this.getCount = get;
+        this.buyCount = buyCount;
+        this.getCount = getCount;
         this.startDate = startDate;
         this.endDate = endDate;
     }
