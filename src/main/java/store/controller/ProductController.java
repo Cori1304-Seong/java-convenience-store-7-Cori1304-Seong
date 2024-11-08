@@ -15,13 +15,34 @@ public class ProductController {
         initProductData();
     }
 
+    //TODO  new HashMap<> 반환 추가 (깊은 복사)
     public Map<String, Product> getProductGroup() {
         return productGroup;
     }
 
+    //TODO  new HashMap<> 반환 추가 (깊은 복사)
     public Map<String, Product> getPromotionProductGroup() {
         return promotionProductGroup;
     }
+
+    // TODO 수량이 0이되며 제거 로직 추가
+    public void minusProduct(String productName, int quantity) {
+        checkContainsProductName(productName, productGroup);
+        Product product = productGroup.get(productName);
+
+        confirmQuantity(productName, product.getQuantity(), quantity);
+        product.setQuantity(product.getQuantity() - quantity);
+    }
+
+    // TODO 수량이 0이되며 제거 로직 추가
+    public void minusPromotionProduct(String productName, int quantity) {
+        checkContainsProductName(productName, promotionProductGroup);
+        Product product = promotionProductGroup.get(productName);
+
+        confirmQuantity(productName, product.getQuantity(), quantity);
+        product.setQuantity(product.getQuantity() - quantity);
+    }
+
 
     void initProductData() {
         List<Product> products = repository.loadDataFromMarkdown();
@@ -46,5 +67,18 @@ public class ProductController {
 
     void addPromotionProduct(Product product) {
         promotionProductGroup.put(product.getName(), product);
+    }
+
+    void checkContainsProductName(String productName, Map<String, Product> group) {
+        if (!group.containsKey(productName)) {
+            throw new IllegalArgumentException(productName + " 제품은 없습니다."); // TODO 물품 예외 요구사항으롭 변경 예정
+        }
+    }
+
+    void confirmQuantity(String productName, int currentQuantity, int requestQuantity) {
+        if (currentQuantity - requestQuantity < 0) {
+            throw new IllegalArgumentException( //TODO 물품 수량 예외 요구사항으롭 변경 예정
+                    productName + " 제품은 개수: " + currentQuantity + "요청 개수: " + requestQuantity);
+        }
     }
 }
