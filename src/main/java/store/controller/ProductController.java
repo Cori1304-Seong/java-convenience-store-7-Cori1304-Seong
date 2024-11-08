@@ -1,5 +1,6 @@
 package store.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,11 +9,20 @@ import store.repository.ProductRepository;
 
 public class ProductController {
     ProductRepository repository = new ProductRepository();
+    List<Product> products;
     Map<String, Product> productGroup = new HashMap<>();
     Map<String, Product> promotionProductGroup = new HashMap<>();
 
+    public ProductController() {
+        this.products = repository.loadDataFromMarkdown();
+    }
+
     public void init() {
         initProductData();
+    }
+
+    public List<Product> getProducts() {
+        return new ArrayList<>(products);
     }
 
     //TODO  new HashMap<> 반환 추가 (깊은 복사)
@@ -43,10 +53,7 @@ public class ProductController {
         product.setQuantity(product.getQuantity() - quantity);
     }
 
-
     void initProductData() {
-        List<Product> products = repository.loadDataFromMarkdown();
-
         for (Product product : products) {
             groupProduct(product);
         }
