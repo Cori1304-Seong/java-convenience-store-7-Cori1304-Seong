@@ -56,7 +56,9 @@
 ### 핵심 기능
 
 ### 프로모션 할인
-1. - [ ] 초기 프로모션 정보 promotions.md 통해서 불러오기
+1. - [ ] 초기 재고 정보 promotion.md 통해서 불러오기
+   - Promotion관련 model class와 repository class 만들기
+   - 불러온 데이터 저장할 collection 만들기
 2. - [ ] 오늘 날짜가 프로모션 기간에 포함된 경우만 할인 적용
 3. - [ ] Buy N Get 1 Free 
    - 프로모션은 N개 구매 시 1개 무료 증정.
@@ -74,10 +76,6 @@
     
 ### 멤버십 할인 
 // TODO 멥버심 회원 여부 파악하는 법, 프로모션 미적용 금액 정의 파악
-1. - [ ] 초기 재고 정보 products.md 통해서 불러오기
-   - Promotion관련 model과 repository 만들기
-   - 불러온 데이터 저장할 collection 만들기
-   - collection에 데이터 저장
 2. - [ ] 멤버십 회원은 프로모션 미적용 금액의 30%를 할인 받음.
 3. - [ ] 프로모션 적용 후 남은 금액에 대해 멤버십 할인을 적용
 4. - [ ] 멤버십 할인의 최대 한도는 8,000원
@@ -88,9 +86,8 @@
 > 2. 다음 고객 구매시 정확한 재고 정보 제공
 
 1. - [ ] 초기 재고 정보 products.md 통해서 불러오기 
-   - Product관련 model과 repository 만들기
-   - 불러온 데이터 저장할 collection 만들기
-   - collection에 데이터 저장
+   - Product관련 model class와 repository class 만들기
+   - 불러온 데이터 저장할 collection 만들고 저장
 2. - [ ] 각 상품의 재고 수량 파악 후,  결제 가능 여부 확인
   - 재고 없을시 =>   
   - 재고 있을 시 => 
