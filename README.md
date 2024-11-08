@@ -85,7 +85,7 @@
 > 1. 재고 차감함 항상 최신 재고 상태 유지, 
 > 2. 다음 고객 구매시 정확한 재고 정보 제공
 
-1. - [ ] 초기 재고 정보 products.md 통해서 불러오기 
+1. - [x] 초기 재고 정보 products.md 통해서 불러오기 
    - Product관련 model class와 repository class 만들기
    - 불러온 데이터 저장할 collection 만들고 저장
 2. - [ ] 각 상품의 재고 수량 파악 후,  결제 가능 여부 확인
