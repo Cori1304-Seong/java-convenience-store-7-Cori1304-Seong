@@ -37,20 +37,32 @@ public class ProductController {
 
     // TODO 수량이 0이되며 제거 로직 추가
     public void minusProduct(String productName, int quantity) {
-        checkContainsProductName(productName, productGroup);
         Product product = productGroup.get(productName);
 
-        confirmQuantity(productName, product.getQuantity(), quantity);
+        confirmProductQuantity(product, quantity);
         product.setQuantity(product.getQuantity() - quantity);
     }
 
     // TODO 수량이 0이되며 제거 로직 추가
     public void minusPromotionProduct(String productName, int quantity) {
-        checkContainsProductName(productName, promotionProductGroup);
         Product product = promotionProductGroup.get(productName);
 
-        confirmQuantity(productName, product.getQuantity(), quantity);
+        confirmPromotionProductQuantity(product, quantity);
         product.setQuantity(product.getQuantity() - quantity);
+    }
+
+    public int getRemainingProductQuantity(String productName, int requestQuantity) {
+        checkContainsProductName(productName, productGroup);
+
+        Product product = productGroup.get(productName);
+        return product.getQuantity() - requestQuantity;
+    }
+
+    public int getRemainingPromotionProductQuantity(String productName, int requestQuantity) {
+        checkContainsProductName(productName, promotionProductGroup);
+
+        Product product = promotionProductGroup.get(productName);
+        return product.getQuantity() - requestQuantity;
     }
 
     void initProductData() {
@@ -61,7 +73,7 @@ public class ProductController {
 
     void groupProduct(Product product) {
         String promotion = product.getPromotion();
-        if (promotion.isEmpty() || promotion.isBlank() || promotion.equals("null")) {
+        if (promotion.isEmpty()) {
             addProduct(product);
             return;
         }
@@ -82,10 +94,17 @@ public class ProductController {
         }
     }
 
-    void confirmQuantity(String productName, int currentQuantity, int requestQuantity) {
-        if (currentQuantity - requestQuantity < 0) {
+    void confirmProductQuantity(Product product, int quantity) {
+        if (getRemainingProductQuantity(product.getName(), quantity) < 0) {
             throw new IllegalArgumentException( //TODO 물품 수량 예외 요구사항으롭 변경 예정
-                    productName + " 제품은 개수: " + currentQuantity + "요청 개수: " + requestQuantity);
+                    product.getName() + " 제품은 개수: " + product.getQuantity() + "요청 개수: " + quantity);
+        }
+    }
+
+    void confirmPromotionProductQuantity(Product product, int quantity) {
+        if (getRemainingPromotionProductQuantity(product.getName(), quantity) < 0) {
+            throw new IllegalArgumentException( //TODO 물품 수량 예외 요구사항으롭 변경 예정
+                    product.getName() + " 제품은 개수: " + product.getQuantity() + "요청 개수: " + quantity);
         }
     }
 }

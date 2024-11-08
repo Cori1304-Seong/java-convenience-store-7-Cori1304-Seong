@@ -15,7 +15,7 @@ class ProductControllerTest {
     private String PROMOTION_NULL_MESSAGE = "promotion 필드가 null입니다.";
     private String PROMOTION_NOT_NULL_MESSAGE = "promotion 필드에 값이 있습니다..";
 
-    List<String> productRequests = new ArrayList<>(List.of("콜라-5", "사이다-7", "물-5"));
+    List<String> productRequests = new ArrayList<>(List.of("콜라-5", "사이다-7", "감자칩-5"));
 
     @BeforeEach
     public void setUp() {
@@ -50,7 +50,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void minusProduct() {
+    public void minusProduct() { // TODO 이름에 test 추가
         List<Integer> expected = getMinusProductExpected(controller.getProductGroup());
 
         for (String request : productRequests) {
@@ -63,7 +63,7 @@ class ProductControllerTest {
     }
 
     @Test
-    public void minusPromotionProduct() {
+    public void minusPromotionProduct() { // TODO 이름에 test 추가
         List<Integer> expected = getMinusProductExpected(controller.getPromotionProductGroup());
 
         for (String request : productRequests) {
@@ -73,6 +73,10 @@ class ProductControllerTest {
 
         List<Integer> actual = getMinusProductActual(controller.getPromotionProductGroup());
         assertEquals(expected, actual);
+    }
+    @Test
+    public void testShow(){
+        controller.showAvailableProducts();
     }
 
     private Boolean isPromotionNull(Product product) {
@@ -90,8 +94,8 @@ class ProductControllerTest {
         try {
             for (String request : productRequests) {
                 String[] _split = request.split("-");
-                Product _product = productGroup.get(_split[0]);
-                expected.add(_product.getQuantity() - Integer.valueOf(_split[1]));
+                Product _product100 = productGroup.get(_split[0]);
+                expected.add(_product100.getQuantity() - Integer.valueOf(_split[1]));
 
             }
         } catch (Exception e) {
