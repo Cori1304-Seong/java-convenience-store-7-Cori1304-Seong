@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 import store.model.Product;
 import store.repository.ProductRepository;
+import store.view.ProductView;
 
 public class ProductController {
     ProductRepository repository = new ProductRepository();
+    ProductView productView = new ProductView();
     List<Product> products;
     Map<String, Product> productGroup = new HashMap<>();
     Map<String, Product> promotionProductGroup = new HashMap<>();
@@ -63,6 +65,12 @@ public class ProductController {
 
         Product product = promotionProductGroup.get(productName);
         return product.getQuantity() - requestQuantity;
+    }
+
+
+    public void showAvailableProducts() {
+        productView.showProducts(products);
+
     }
 
     void initProductData() {
