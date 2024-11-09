@@ -54,15 +54,17 @@ public class ProductController {
     }
 
     public int getRemainingProductQuantity(String productName, int requestQuantity) {
-        checkContainsProductName(productName, productGroup);
-
+        if (isContainsProductByName(productName)) {
+            throw new RuntimeException("프로모션 재고중에 " + productName + " 제품은 없습니다. "); //TODO 하드코딩 수정
+        }
         Product product = productGroup.get(productName);
         return product.getQuantity() - requestQuantity;
     }
 
     public int getRemainingPromotionProductQuantity(String productName, int requestQuantity) {
-        checkContainsProductName(productName, promotionProductGroup);
-
+        if (isContainsPromotionProductByName(productName)) {
+            throw new RuntimeException("프로모션 재고중에 " + productName + " 제품은 없습니다. "); //TODO 하드코딩 수정
+        }
         Product product = promotionProductGroup.get(productName);
         return product.getQuantity() - requestQuantity;
     }
@@ -96,11 +98,22 @@ public class ProductController {
         promotionProductGroup.put(product.getName(), product);
     }
 
-    void checkContainsProductName(String productName, Map<String, Product> group) {
-        if (!group.containsKey(productName)) {
-            throw new IllegalArgumentException(productName + " 제품은 없습니다."); // TODO 물품 예외 요구사항으롭 변경 예정
+    boolean isContainsProductByName(String productName) {
+        if (!productGroup.containsKey(productName)) {
+            System.out.println(productName + " 제품은 없습니다."); // TODO 물품 예외 요구사항으롭 변경 예정
+            return false;
         }
+        return true;
     }
+
+    boolean isContainsPromotionProductByName(String productName) {
+        if (!promotionProductGroup.containsKey(productName)) {
+            System.out.println(productName + " 제품은 없습니다."); // TODO 물품 예외 요구사항으롭 변경 예정
+            return false;
+        }
+        return true;
+    }
+
 
     void confirmProductQuantity(Product product, int quantity) {
         if (getRemainingProductQuantity(product.getName(), quantity) < 0) {
