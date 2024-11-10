@@ -13,6 +13,13 @@ public class Product {
         this.promotion = promotion;
     }
 
+    public Product(Product product) {
+        this.name = product.name;
+        this.price = product.price;
+        this.quantity = product.quantity;
+        this.promotion = product.promotion;
+    }
+
     public String getName() {
         return name;
     }
@@ -49,7 +56,5 @@ public class Product {
         String result = "Name: " + name + ", Price: " + price + ", Quantity: " + quantity + ", Promotion: " + promotion;
 
         return result;
-
     }
-
 }
