@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import store.model.GiveWayCount;
 import store.model.Promotion;
 import store.util.CustomFormater;
 
@@ -27,6 +28,8 @@ class PromotionControllerTest {
     @BeforeEach
     void set() {
         this.controller = new PromotionController();
+
+
     }
 
     @Test
@@ -42,8 +45,8 @@ class PromotionControllerTest {
         List<Integer> expected = new ArrayList<>(List.of(0, 1, 0, 1, 0, 1));
         List<Integer> actual = new ArrayList<>();
         for (int[] numbers : calculateAmountData) {
-            int count = controller.calculatePromotionAmount(numbers[0], numbers[1], numbers[2]);
-            actual.add(count);
+            GiveWayCount count = controller.calculatePromotionAmount(numbers[0], numbers[1], numbers[2]);
+            actual.add(count.unmetCount);
         }
         System.out.println("정답: " + expected);
         System.out.println("제출: " + actual);

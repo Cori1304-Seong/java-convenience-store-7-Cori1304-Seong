@@ -33,4 +33,9 @@ public class PlannedPurchase {
 
         return giveawayCount;
     }
+    public String toString(){
+        String result = "Product: " + product +"\n" +", isPromtion: " + isPromotionProduct + ", Count: " + count + ", GiveawayCount: " + giveawayCount;
+
+        return result;
+    }
 }

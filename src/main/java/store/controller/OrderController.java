@@ -27,6 +27,17 @@ public class OrderController {
         buildOrders();
     }
 
+    public boolean minusOrderCount(String name, int count) {
+        Order order = orderGroup.get(name);
+        int result = order.getCount() - count;
+        if (result < 0) {
+            return false;
+        }
+        order.setCount(result);
+        return true;
+    }
+
+
     private void buildOrdersGroup(Order order) {
         if (orderGroup.containsKey(order.name)) {
             Order _order = orderGroup.get(order.name);

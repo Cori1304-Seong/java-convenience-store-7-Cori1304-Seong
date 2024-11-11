@@ -22,7 +22,7 @@ class PlannedPurchaseControllerTest {
 
         controller.addPlannedPurchase(plannedPurchase);
 
-        List<PlannedPurchase> plannedPurchases = controller.getPlannedPurchase();
+        List<PlannedPurchase> plannedPurchases = controller.getPlannedPurchases();
         assertEquals(1, plannedPurchases.size());
         assertEquals("컵라면", plannedPurchases.get(0).getProduct().getName());
     }
@@ -32,10 +32,10 @@ class PlannedPurchaseControllerTest {
         PlannedPurchase plannedPurchase = new PlannedPurchase(new Product("컵라면", 1700, 1, "MD추천상품"), true, 1, 0);
         controller.addPlannedPurchase(plannedPurchase);
 
-        List<PlannedPurchase> retrievedList = controller.getPlannedPurchase();
+        List<PlannedPurchase> retrievedList = controller.getPlannedPurchases();
         retrievedList.add(new PlannedPurchase(new Product("새 제품", 2000, 1, "추천상품"), false, 2, 1));
 
-        assertEquals(1, controller.getPlannedPurchase().size());
+        assertEquals(1, controller.getPlannedPurchases().size());
     }
 
 }

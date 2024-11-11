@@ -19,13 +19,13 @@ public class Order {
         this.count = count;
     }
 
-    public boolean minusCount(int count) {
-        int result = this.count - count;
-        if (result < 0) {
-            return false;
-        }
-        this.count = result;
-        return true;
-    }
+//    public boolean minusCount(int count) {
+//        int result = this.count - count;
+//        if (result < 0) {
+//            return false;
+//        }
+//        this.count = result;
+//        return true;
+//    }
 
 }
