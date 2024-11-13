@@ -1,5 +1,6 @@
 package store.repository;
 
+import consts.StringConstants;
 import consts.FilePath;
 import store.model.Product;
 
@@ -14,10 +15,10 @@ public class ProductRepository extends BaseRepository<Product> {
         String name = data[0].trim();
         int price = Integer.parseInt(data[1].trim());
         int quantity = Integer.parseInt(data[2].trim());
-        if (data.length < 4) {
-            return new Product(name, price, quantity, "null");
-
+        String promotion = data[3].trim();
+        if (data.length < 4 || promotion.isEmpty() || promotion.isBlank() || promotion.equals(StringConstants.NULL)) {
+            return new Product(name, price, quantity, "");
         }
-        return new Product(name, price, quantity, data[3].trim());
+        return new Product(name, price, quantity, promotion);
     }
 }

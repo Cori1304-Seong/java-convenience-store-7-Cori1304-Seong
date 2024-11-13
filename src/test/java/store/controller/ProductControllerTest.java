@@ -1,5 +1,9 @@
 package store.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +14,8 @@ class ProductControllerTest {
 
     private String PROMOTION_NULL_MESSAGE = "promotion 필드가 null입니다.";
     private String PROMOTION_NOT_NULL_MESSAGE = "promotion 필드에 값이 있습니다..";
+
+    List<String> productRequests = new ArrayList<>(List.of("콜라-5", "사이다-7", "감자칩-5"));
 
     @BeforeEach
     public void setUp() {
@@ -43,6 +49,36 @@ class ProductControllerTest {
         }
     }
 
+    @Test
+    public void minusProduct() { // TODO 이름에 test 추가
+        List<Integer> expected = getMinusProductExpected(controller.getProductGroup());
+
+        for (String request : productRequests) {
+            String[] _split = request.split("-");
+            controller.minusProduct(_split[0], Integer.valueOf(_split[1]));
+        }
+
+        List<Integer> actual = getMinusProductActual(controller.getProductGroup());
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void minusPromotionProduct() { // TODO 이름에 test 추가
+        List<Integer> expected = getMinusProductExpected(controller.getPromotionProductGroup());
+
+        for (String request : productRequests) {
+            String[] _split = request.split("-");
+            controller.minusPromotionProduct(_split[0], Integer.valueOf(_split[1]));
+        }
+
+        List<Integer> actual = getMinusProductActual(controller.getPromotionProductGroup());
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void testShow(){
+        controller.showAvailableProducts();
+    }
+
     private Boolean isPromotionNull(Product product) {
         String promotion = product.getPromotion();
         if (promotion.equals("null") || promotion.isBlank() || promotion.isEmpty()) {
@@ -50,5 +86,38 @@ class ProductControllerTest {
             return true;
         }
         return false;
+    }
+
+    List<Integer> getMinusProductExpected(Map<String, Product> productGroup) {
+        List<Integer> expected = new ArrayList<>();
+
+        try {
+            for (String request : productRequests) {
+                String[] _split = request.split("-");
+                Product _product100 = productGroup.get(_split[0]);
+                expected.add(_product100.getQuantity() - Integer.valueOf(_split[1]));
+
+            }
+        } catch (Exception e) {
+            System.out.println("[Error] getMinusProductExpected() : " + e);
+
+        }
+        return expected;
+    }
+
+    List<Integer> getMinusProductActual(Map<String, Product> productGroup) {
+        List<Integer> actual = new ArrayList<>();
+
+        try {
+            for (String request : productRequests) {
+                String[] _split = request.split("-");
+                Product _product = productGroup.get(_split[0]);
+                actual.add(_product.getQuantity());
+
+            }
+        } catch (Exception e) {
+            System.out.println("[테스트 에러!!] getMinusProductActual(): " + e);
+        }
+        return actual;
     }
 }
